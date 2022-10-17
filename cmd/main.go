@@ -1,7 +1,10 @@
 package main
 
 import (
+	"fmt"
 	"image/color"
+	"os"
+	"path/filepath"
 
 	"fyne.io/fyne/v2"
 	"fyne.io/fyne/v2/app"
@@ -19,7 +22,7 @@ func openFilePicker(parent fyne.Window) {
 			dialog.ShowError(err, parent)
 		}
 		if path != nil {
-			textdata.PrintPath(path.URI().Path())
+			textdata.NewFile(path.URI().Path())
 		}
 	}, parent)
 }
@@ -40,6 +43,14 @@ func main() {
 	)
 
 	myWindow.SetMainMenu(mainMenu)
+
+	processedDir, _ := filepath.Abs("data/processed")
+	fileDir, _ := os.Open(processedDir)
+	defer fileDir.Close()
+	existingFiles, _ := fileDir.Readdirnames(0)
+	for _, file := range existingFiles {
+		fmt.Println(file)
+	}
 
 	text := canvas.NewText("Bigger Test", color.Black)
 	text.Alignment = fyne.TextAlignCenter
