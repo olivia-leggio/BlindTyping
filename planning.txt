@@ -1,0 +1,13 @@
+plain interface like problemwords
+	maybe option for doing random words vs text samples?
+
+shows a couple words at a time, maybe three
+	including punctuation etc
+	they disappear when you start typing
+	doesn't show what you're typing
+		if errors: shows them highlighted when you finish those words
+		if none, just moves on
+word list or text samples stored in json
+
+definitely want to track error rate, not sure about tracking wpm
+	it wouldn't be hard, I'm just not sure if I would like
